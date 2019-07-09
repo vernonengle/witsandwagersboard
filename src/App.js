@@ -1,26 +1,44 @@
+import axios from 'axios';
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Edited this
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+    componentDidMount() {
+        axios.get('https://api.vernon-engle.info/games/witsandwagers/showquestion', {
+            params: {
+                id: 1
+            }
+        })
+            .then((response) => {
+                this.setState({
+                    question: response
+                })
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            .then(function () {
+                // always executed
+            });
+    }
+
+    render() {
+        return (
+            <div className="ui four column centered grid">
+                <div className="column row"/>
+                <div className="column row"/>
+                <div className="column row"/>
+                <div className="column row"/>
+                <div className="column centered">
+                    <div className="ui card">
+                        <div className="content">
+                            <a className="header">Player Red</a>
+                            <p>{this.state.question}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default App;
