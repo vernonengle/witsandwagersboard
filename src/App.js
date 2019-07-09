@@ -32,7 +32,7 @@ class App extends React.Component {
                     <div className="ui card">
                         <div className="content">
                             <a className="header">Player Red</a>
-                            <p>{this.state.question[0]}</p>
+                            <p className="description">{this.state.question[0]}</p>
                         </div>
                     </div>
                 </div>
