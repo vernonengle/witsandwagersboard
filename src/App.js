@@ -9,19 +9,20 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        this.showQuestion()
+        this.showQuestion();
+
     }
 
     async showQuestion() {
-        const response = axios.get('https://api.vernon-engle.info/games/witsandwagers/showquestion', {
+        const response = await axios.get('https://api.vernon-engle.info/games/witsandwagers/showquestion', {
             params: {
                 id: 1
             }
         });
         this.setState({
-            question: response
+            question: response.data
         });
-    }
+    };
 
     render() {
         return (
