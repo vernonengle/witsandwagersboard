@@ -3,7 +3,9 @@ import React from 'react';
 
 class App extends React.Component {
     state = {
-        question: []
+        question: {
+            question: "loading"
+        }
     }
 
     componentDidMount() {
@@ -32,7 +34,7 @@ class App extends React.Component {
                     <div className="ui card">
                         <div className="content">
                             <a className="header">Player Red</a>
-                            <p className="description">{this.state.question[0]}</p>
+                            <p className="description">{this.state.question.question}</p>
                         </div>
                     </div>
                 </div>
