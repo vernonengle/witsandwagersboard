@@ -28,7 +28,7 @@ class App extends React.Component {
     render() {
         return (
             <div className="pusher">
-                <div className="ui inverted vertical masthead center aligned segment">
+                <div className="ui inverted center aligned segment">
                     <div className="ui container">
                         <h1 className="ui inverted container">
                             Wits And Wagers
