@@ -29,47 +29,50 @@ let verticalSlots = {
     8: position8
 }
 
+let playerBetSlots = {
+    "redplayer" : redplayer,
+    "blueplayer" : blueplayer,
+    "yellowplayer" : yellowplayer,
+    "pinkplayer" : pinkplayer,
+    "greenplayer" : greenplayer
+}
+
+let horizontalSlots = {
+    9: position9,
+    10: position10
+}
+
 class BettingBoard extends React.Component {
-    getColumn(key) {
+    getColumn(map, key, imageSize) {
         return (
             <Grid.Column key={key}>
-                <BettingPosition imageSource={verticalSlots[key]} position={key}/>
+                <BettingPosition imageSource={map[key]} position={key} imageSize={imageSize}/>
             </Grid.Column>
         )
     }
+    getRows(map, key, imageSize) {
+        return (
+            <Grid.Row key={key}>
+                <BettingPosition imageSource={map[key]} position={key} imageSize={imageSize}/>
+            </Grid.Row>
+        )
+    }
     render() {
-        const verticalSlotColumns = _.map((_.keys(verticalSlots)), (key)=> this.getColumn(key));
+        const verticalSlotColumns = _.map((_.keys(verticalSlots)), (key)=> this.getColumn(verticalSlots, key, "large"));
+        const horizontalSlotColumns = _.map((_.keys(horizontalSlots)), (key)=> this.getColumn(horizontalSlots, key, "large"));
+        const playerBetSlotsRows = _.map((_.keys(playerBetSlots)), (key)=> this.getRows(playerBetSlots, key, "tiny"));
         return (
             <div className="ui equal width grid">
                 <div className="nine column row">
                     {verticalSlotColumns}
                     <div className="ui column">
                         <div className="ui grid">
-                            <div className="row">
-                                <img className="ui image" src={redplayer}/>
-                            </div>
-                            <div className="row">
-                                <img className="ui image" src={blueplayer}/>
-                            </div>
-                            <div className="row">
-                                <img className="ui image" src={yellowplayer}/>
-                            </div>
-                            <div className="row">
-                                <img className="ui image" src={pinkplayer}/>
-                            </div>
-                            <div className="row">
-                                <img className="ui image" src={greenplayer}/>
-                            </div>
+                            {playerBetSlotsRows}
                         </div>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="ui column">
-                        <img className="ui image" src={position9}/>
-                    </div>
-                    <div className="ui column">
-                        <img className="ui image" src={position10}/>
-                    </div>
+                    {horizontalSlotColumns}
                 </div>
             </div>
         );

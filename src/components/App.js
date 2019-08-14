@@ -5,16 +5,14 @@ import BettingBoard from "./BettingBoard";
 class App extends React.Component {
     state = {
         question: {
-            question: "loading"
+            question: ""
         }
     }
 
-    componentDidMount() {
-        this.showQuestion();
-
-    }
-
-    async showQuestion() {
+    showQuestion = async () => {
+        this.setState({
+            question: "loading"
+        });
         const response = await axios.get('https://api.vernon-engle.info/games/witsandwagers/showquestion', {
             params: {
                 id: 1
@@ -31,8 +29,11 @@ class App extends React.Component {
                 <div className="ui inverted center aligned segment">
                     <div className="ui container">
                         <h1 className="ui inverted container">
-                            Wits And Wagers
+                            <a onClick={this.showQuestion} href="#">
+                                Wits And Wagers
+                            </a>
                         </h1>
+                        <h2>{this.state.question.question}</h2>
                         <div className="ui container">
                             <BettingBoard/>
                         </div>

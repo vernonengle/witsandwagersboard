@@ -11,8 +11,8 @@ class BettingPosition extends Component {
         const { open, size } = this.state
 
         return (
-            <div>
-                <img className="ui image tiny" src={this.props.imageSource} onClick={this.show('tiny')}/>
+            <a onClick={this.show('tiny')} href="#">
+                <img className={`ui image ${this.props.imageSize}`} src={this.props.imageSource} alt={ `position ${this.props.position}` }/>
 
                 <Modal size={size} open={open} onClose={this.close}>
                     <Modal.Header>Delete Your Account</Modal.Header>
@@ -24,7 +24,7 @@ class BettingPosition extends Component {
                         <Button positive icon='checkmark' labelPosition='right' content='Yes' />
                     </Modal.Actions>
                 </Modal>
-            </div>
+            </a>
         )
     }
 }
