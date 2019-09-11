@@ -30,7 +30,7 @@ class App extends React.Component {
                     <div className="ui container">
                         <h1 className="ui inverted container">
                             <a onClick={this.showQuestion} href="#">
-                                Wits And Wagers
+                                Wits And Wagers 2
                             </a>
                         </h1>
                         <h2>{this.state.question.question}</h2>
